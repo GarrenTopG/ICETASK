@@ -5,16 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.icetask"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 37 // Updated from 35 to support latest AndroidX dependencies
 
     defaultConfig {
         applicationId = "com.example.icetask"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35 // targetSdk can remain at 35
         versionCode = 1
         versionName = "1.0"
 
@@ -40,10 +36,10 @@ android {
 }
 
 dependencies {
-    // Standard AndroidX Views (Fixes AppCompatActivity errors)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    // Standard AndroidX Views (Required for XML + AppCompat)
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
 
     // Navigation & UI Components
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -58,7 +54,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // Jetpack Compose (Keep if mixing Compose, otherwise optional)
+    // Jetpack Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
